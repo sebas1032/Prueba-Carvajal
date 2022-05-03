@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7657be12-3540-4874-a5b7-27b27d5be8a0": {
+      "ProjectGuid": "7657be12-3540-4874-a5b7-27b27d5be8a0",
+      "DisplayName": "ApiCarvajal",
+      "ColorIndex": 0
+    },
+    "12e061a4-462e-4812-a04e-466e804cd05e": {
+      "ProjectGuid": "12e061a4-462e-4812-a04e-466e804cd05e",
+      "DisplayName": "FrontCarvajal",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

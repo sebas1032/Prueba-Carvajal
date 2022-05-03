@@ -1,0 +1,54 @@
+<div class="container">
+
+  <h1>Listado de vuelos</h1>
+
+  <br>
+  
+    <button class="btn btn-primary btn-sm" role="button" routerLink="/programar">Programar nuevo vuelo</button>
+  
+
+  <div class="table-responsive">
+    <table class="table table-stripped table-hover">
+
+      <thead>
+        <tr>
+          <th>Vuelo ID</th>
+          <th>Ciudad de origen</th>
+          <th>Ciudad de destino</th>
+          <th>Fecha</th>
+          <th>Hora de salida</th>
+          <th>Hora de llegada</th>
+          <th>Numero de vuelo</th>
+          <th>Aerolinea</th>
+          <th>Estado vuelo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let detalle of vuelosLista">
+          <td>{{detalle.vuelosId}}</td>
+          <td>{{detalle.ciudadOrigen}} </td>
+          <td>{{detalle.ciudadDestino}} </td>
+          <td>{{detalle.fecha}} </td>
+          <td>{{detalle.horaSalida}} </td>
+          <td>{{detalle.horaLlegada}} </td>
+          <td>{{detalle.numeroVuelo}} </td>
+          <td>{{detalle.aerolinea}} </td>
+          <td>{{detalle.estadoVuelo}} </td>
+
+          <td>
+            <button class="btn btn-primary btn-sm" role="button" (click)="eliminarVuelo(detalle.vuelosId)">Eliminar</button>
+          </td>
+          <td>   
+              <button class="btn btn-dark" (click)="Editar(detalle.vuelosId)">Editar</button>
+          </td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
