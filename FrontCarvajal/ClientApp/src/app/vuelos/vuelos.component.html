@@ -1,6 +1,6 @@
 <div class="container">
 
-  <h1>Listado de vuelos</h1>
+  <h1 class="text-center">Listado de vuelos</h1>
 
   <br>
   
@@ -37,10 +37,10 @@
           <td>{{detalle.estadoVuelo}} </td>
 
           <td>
-            <button class="btn btn-primary btn-sm" role="button" (click)="eliminarVuelo(detalle.vuelosId)">Eliminar</button>
+            <button class="btn btn-dark btn-sm" role="button" (click)="eliminarVuelo(detalle.vuelosId)">Eliminar</button>
           </td>
           <td>   
-              <button class="btn btn-dark" (click)="Editar(detalle.vuelosId)">Editar</button>
+              <button class="btn btn-primary" (click)="Editar(detalle.vuelosId)">Editar</button>
           </td>
 
 

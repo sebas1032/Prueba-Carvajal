@@ -60,13 +60,9 @@ export class LoginComponent implements OnInit {
           this.errorStatus = true;
           this.errorMsj = data.mensaje
         }
-      //}
-      //else {
-        //motrar vista de error
-     // }
     }, (err: any) => {
       console.error('fallo: ' + err);
-      //this.router.navigate(['/pages/error']);
+      this.router.navigate(['/error500']);
     }
     )
   }

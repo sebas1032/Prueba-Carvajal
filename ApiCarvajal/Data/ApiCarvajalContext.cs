@@ -18,5 +18,8 @@ namespace ApiCarvajal.Data
         public DbSet<ApiCarvajal.Models.Login> Login { get; set; }
 
         public DbSet<ApiCarvajal.Models.VuelosSalientes> VuelosSalientes { get; set; }
+        public DbSet<ApiCarvajal.Models.Combos> Combos { get; set; }
+
+
     }
 }

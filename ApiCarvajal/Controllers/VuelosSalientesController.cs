@@ -158,6 +158,40 @@ namespace ApiCarvajal.Controllers
         }
 
 
+        // GET: api/Combos
+        [HttpGet("consultarcombos/{Tipo}")]
+
+        public async Task<IEnumerable<Combos>> Combos(int Tipo)
+        {
+
+            var parameters = new[] {
+              new SqlParameter("@Tipo", SqlDbType.Int) { Direction = ParameterDirection.Input, Value = Tipo },
+            new SqlParameter("@pCodigo", SqlDbType.Int) { Direction = ParameterDirection.Output, Value = 0 },
+            new SqlParameter("@pMensaje", SqlDbType.VarChar) { Direction = ParameterDirection.Output, Value = "", Size = 250 },
+            };
+
+            //Procedimiento almacenado que retorna una consulta se usa _context.Registro.FromSqlRaw y al final se pone ToListAsync()
+            List<Combos> consulta = await _context.Combos.FromSqlRaw("[dbo].[inputs_consultar]@Tipo,@pCodigo OUTPUT, @pMensaje OUTPUT", parameters).ToListAsync();
+
+            //debe existir un objeto que contenga la repuesta y el listado
+            CombosRespuesta combosRespuesta = new CombosRespuesta();
+
+            //se instancia la clase Respuesta y se carga en la variable respuesta
+            Respuesta respuesta = new Respuesta();
+
+            //se carga en la variable respuesta los datos devueltos por procedimiento almacenado relacionado con pCodigo y pMensaje
+            respuesta.Codigo = parameters[1].Value.ToString();//el item corresponde al orden del array parameters
+            respuesta.Mensaje = parameters[2].Value.ToString();//el item corresponde al orden del array parameters
+
+            //se unen el listado entregado por el procedimiento almacenado y la respuesta en un solo objeto que es el que se va a retornar
+            combosRespuesta.respuesta = respuesta;
+            combosRespuesta.combos = consulta;
+
+            return consulta;
+        }
+
+
+
 
     }
 }

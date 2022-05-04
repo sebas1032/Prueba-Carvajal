@@ -11,6 +11,10 @@ export const environment = {
   vuelosEditar: "https://localhost:7175/api/VuelosSalientes/editar",
   vuelosEliminar: "https://localhost:7175/api/VuelosSalientes/eliminar/",
 
+  urlCiudades: "https://localhost:7175/api/VuelosSalientes/consultarcombos/1",
+  urlEstados: "https://localhost:7175/api/VuelosSalientes/consultarcombos/2",
+  urlAerolineas: "https://localhost:7175/api/VuelosSalientes/consultarcombos/3",
+
 };
 
 

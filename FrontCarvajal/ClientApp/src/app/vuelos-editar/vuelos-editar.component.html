@@ -1,51 +1,141 @@
 <div class="container">
-  <h1>Formulario para editar vuelos</h1>
+  <h1 class="text-center">Formulario para editar vuelos</h1>
 
   <form [formGroup]="form" (ngSubmit)="GuardarEdicionVuelos()">
-    <div class="form-row">
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Ciudad de origen</label>
-        <input formControlName="ciudadOrigen" type="text" class="form-control" id="inputEmail4" placeholder="Ciudad de origen">
+    <div class="row justify-content-center">
+
+      <div class="form-group col-4">
+        <label  class="border"  for="inputEmail4">Ciudad de origen {{ciudadOrigen}}</label>
+        <select formControlName="ciudadOrigen" class="form-select" aria-label="Default select example" name="" id="">
+          <option *ngFor="let ciudades of ciudades" [value]="ciudades.valor" >{{ciudades.valor}}</option>
+        </select>
       </div>
 
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Ciudad de destino</label>
-        <input formControlName="ciudadDestino" type="text" class="form-control" id="inputEmail4" placeholder="Ciudad de destino">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Fecha</label>
-        <input formControlName="fecha" type="text" class="form-control" id="inputEmail4" placeholder="Fecha">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Hora de salida</label>
-        <input formControlName="horaSalida" type="text" class="form-control" id="inputEmail4" placeholder="Hora de salida">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Hora de llegada</label>
-        <input formControlName="horaLlegada" type="text" class="form-control" id="inputEmail4" placeholder="Hora de llegada">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Numero de vuelo</label>
-        <input formControlName="numeroVuelo" type="text" class="form-control" id="inputEmail4" placeholder="Numero de vuelo">
-      </div>
-
-      <div class="form-group col-md-6">
-        <label for="inputEmail4">Aerolinea</label>
-        <input formControlName="aerolinea" type="text" class="form-control" id="inputEmail4" placeholder="Aerolinea">
+      <div class="form-group col-4">
+        <label for="inputEmail4">Ciudad de destino {{ciudadDestino}}</label>
+        <select formControlName="ciudadDestino" class="form-select" aria-label="Default select example" name="" id="">
+          <option *ngFor="let ciudades of ciudades" [value]="ciudades.valor">{{ciudades.valor}}</option>
+        </select>
       </div>
     </div>
 
-    <div class="form-group col-md-6">
-      <label for="inputEmail4">Estado del vuelo</label>
-      <input formControlName="estadoVuelo" type="text" class="form-control" id="inputEmail4" placeholder="Estado del vuelo">
+    <div class="row justify-content-center">
+      <div class="form-group col-md-2">
+        <label for="inputEmail4">Fecha {{fecha}}</label>
+        <input type='date' class="form-control" formControlName="fecha" value="{{fecha}}" />
+      </div>
+      </div>
+
+
+
+
+    <div class="row justify-content-center ">
+
+      <div class="text-center">
+        <label for="inputEmail4">Hora de salida {{horaSalida}}</label>
+      </div>
+
+      <div class="form-group col-md-1 ">
+        <select formControlName="horaSalida" class="form-select" aria-label="Default select example">
+          <option [value]="1">1</option>
+          <option [value]="2">2</option>
+          <option [value]="3">3</option>
+          <option [value]="4">4</option>
+          <option [value]="5">5</option>
+          <option [value]="6">6</option>
+          <option [value]="7">7</option>
+          <option [value]="8">8</option>
+          <option [value]="9">9</option>
+          <option [value]="10">10</option>
+          <option [value]="11">11</option>
+          <option [value]="12">12</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-1">
+        <select formControlName="minutoSalida" class="form-select" aria-label="Default select example">
+          <option [value]="00">00</option>
+          <option [value]="15">15</option>
+          <option [value]="30">30</option>
+          <option [value]="45">45</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-1">
+        <select formControlName="franjaSalida" class="form-select" aria-label="Default select example">
+          <option [value]="1">AM</option>
+          <option [value]="2">PM</option>
+        </select>
+      </div>
     </div>
 
-    <br>
-    <button type="submit" class="btn btn-primary">Aceptar</button>
-  </form>
+      <div class="row justify-content-center">
+        <div class="text-center">
+          <label for="inputEmail4">Hora de llegada {{horaLlegada}}</label>
+        </div>
+        <div class="form-group col-md-1">
+
+          <select formControlName="horaLlegada" class="form-select" aria-label="Default select example">
+            <option [value]="1">1</option>
+            <option [value]="2">2</option>
+            <option [value]="3">3</option>
+            <option [value]="4">4</option>
+            <option [value]="5">5</option>
+            <option [value]="6">6</option>
+            <option [value]="7">7</option>
+            <option [value]="8">8</option>
+            <option [value]="9">9</option>
+            <option [value]="10">10</option>
+            <option [value]="11">11</option>
+            <option [value]="12">12</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-1">
+          <select formControlName="minutoLlegada" class="form-select" aria-label="Default select example" name="" id="" >
+            <option [value]="00">00</option>
+            <option [value]="15">15</option>
+            <option [value]="30">30</option>
+            <option [value]="45">45</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-1">
+          <select formControlName="franjaLlegada" class="form-select" aria-label="Default select example" name="" id="" >
+            <option [value]="1">AM</option>
+            <option [value]="2">PM</option>
+          </select>
+        </div>
+      </div>
+
+
+
+      <div class="row justify-content-center">
+
+        <div class="form-group col-4">
+          <label for="inputEmail4">Aerolinea {{aerolinea}}</label>
+          <select formControlName="aerolinea" class="form-select" aria-label="Default select example">
+            <option *ngFor="let aerolineas of aerolineas" [value]="aerolineas.valor">{{aerolineas.valor}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="inputEmail4">Numero de vuelo {{numeroVuelo}}</label>
+          <input formControlName="numeroVuelo" type="text" class="form-control" id="inputEmail4">
+        </div>
+
+        <div class="form-group col-2">
+          <label for="inputEmail4">Estado del vuelo {{estadoVuelo}}</label>
+          <select formControlName="estadoVuelo" class="form-select" aria-label="Default select example" name="" id="">
+            <option *ngFor="let estados of estados" [value]="estados.valor">{{estados.valor}}</option>
+          </select>
+        </div>
+
+      </div>
+    <br />
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+      </div>
+</form>
   <br>
 </div>

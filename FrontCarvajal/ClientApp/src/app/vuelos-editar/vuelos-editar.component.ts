@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { combosI } from '../interfaces/combos.interface';
 import { vuelosI } from '../interfaces/vuelos.interface';
 import { ServicioService } from '../servicios/servicio.service';
 
@@ -23,6 +24,10 @@ export class VuelosEditarComponent implements OnInit {
   aerolinea: string;
   estadoVuelo: string;
 
+  ciudades: combosI[];
+  estados: combosI[];
+  aerolineas: combosI[];
+
   errorStatus: boolean = false;
   errorMsj: any = "";
 
@@ -38,7 +43,11 @@ export class VuelosEditarComponent implements OnInit {
       ciudadDestino: '',
       fecha: '',
       horaSalida: '',
+      minutoSalida: '',
+      franjaSalida: '',
       horaLlegada: '',
+      minutoLlegada: '',
+      franjaLlegada: '',
       numeroVuelo: '',
       aerolinea: '',
       estadoVuelo: ''
@@ -47,6 +56,24 @@ export class VuelosEditarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+    this.service.ObtenerCiudades().subscribe(response => {
+      console.log(response)
+      this.ciudades = response
+    })
+
+    this.service.ObtenerEstados().subscribe(response => {
+      console.log(response)
+      this.estados = response
+    })
+
+    this.service.ObtenerAerolineas().subscribe(response => {
+      console.log(response)
+      this.aerolineas = response
+    })
+
+
 
     this.vuelosId = this.activatedRoute.snapshot.params['vuelosId'];
     console.log("vuelosId:" + this.vuelosId)
@@ -76,8 +103,8 @@ export class VuelosEditarComponent implements OnInit {
       ciudadDestino: this.form.get('ciudadDestino')?.value ? this.form.get('ciudadDestino')?.value : this.ciudadDestino,
       fecha: this.form.get('fecha')?.value ? this.form.get('fecha')?.value : this.fecha,
 
-      horaSalida: this.form.controls['horaSalida'].value ? this.form.controls['horaSalida'].value : this.horaSalida,
-      horaLlegada: this.form.get('horaLlegada')?.value ? this.form.get('horaLlegada')?.value : this.horaLlegada,
+      horaSalida: this.form.get('horaSalida')?.value.toString() + ":" + (this.form.get('minutoSalida')?.value.toString() == 0 ? "00" : this.form.get('minutoSalida')?.value.toString()) + " " + (this.form.get('franjaSalida')?.value == "1" ? "AM" : "PM"),
+      horaLlegada: this.form.get('horaLlegada')?.value.toString() + ":" + (this.form.get('minutoLlegada')?.value.toString() == 0 ? "00" : this.form.get('minutoLlegada')?.value.toString()) + " " + (this.form.get('franjaLlegada')?.value == "1" ? "AM" : "PM"),
       numeroVuelo: this.form.get('numeroVuelo')?.value ? this.form.get('numeroVuelo')?.value : this.numeroVuelo,
       aerolinea: this.form.controls['aerolinea'].value ? this.form.controls['aerolinea'].value : this.aerolinea,
       estadoVuelo: this.form.get('estadoVuelo')?.value ? this.form.get('estadoVuelo')?.value : this.estadoVuelo,

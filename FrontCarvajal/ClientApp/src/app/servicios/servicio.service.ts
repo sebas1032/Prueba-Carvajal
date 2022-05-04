@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { combosI } from '../interfaces/combos.interface';
 import { loginI } from '../interfaces/login.interface';
 import { responseI } from '../interfaces/response.interface';
 import { vuelosI } from '../interfaces/vuelos.interface';
@@ -15,8 +16,10 @@ export class ServicioService {
   urlVuelosConsultar = environment.vuelosConsultar
   urlVuelosCrear = environment.vuelosCrear
   urlVuelosEditar = environment.vuelosEditar
-  urlVuelosEliminar = environment.vuelosEliminar 
-
+  urlVuelosEliminar = environment.vuelosEliminar
+  urlCiudades = environment.urlCiudades
+  urlEstados = environment.urlEstados
+  urlAerolineas = environment.urlAerolineas
 
   constructor(private http: HttpClient) { }
 
@@ -49,5 +52,17 @@ export class ServicioService {
     return this.http.post<responseI>(url, vuelos)
   }
 
+
+  ObtenerCiudades(): Observable<combosI[]> {
+    return this.http.get<combosI[]>(this.urlCiudades)
+  }
+
+  ObtenerEstados(): Observable<combosI[]> {
+    return this.http.get<combosI[]>(this.urlEstados)
+  }
+
+  ObtenerAerolineas(): Observable<combosI[]> {
+    return this.http.get<combosI[]>(this.urlAerolineas)
+  }
 
 }
